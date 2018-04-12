@@ -164,19 +164,11 @@ namespace GitHub.Unity
             keychainAdapter.Set(credential);
         }
 
-        public void SetToken(UriString host, string token)
+        public void SetToken(UriString host, string token, string username = null)
         {
             //logger.Trace("SetToken Host:{0}", host);
             var keychainAdapter = GetKeychainAdapter(host);
-            keychainAdapter.UpdateToken(token);
-        }
-
-        public void UpdateToken(UriString host, string token)
-        {
-            //logger.Trace("UpdateToken Host:{0}", host);
-            var keychainAdapter = GetKeychainAdapter(host);
-            var keychainItem = keychainAdapter.Credential;
-            keychainItem.UpdateToken(token);
+            keychainAdapter.UpdateToken(token, username);
         }
 
         private void LoadConnectionsFromDisk()
